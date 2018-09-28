@@ -1,0 +1,50 @@
+/* Overall responsive layout changes */
+
+/* ====================== Restaurant Filtering ====================== */
+.filter-options {
+  height: 100%;
+  padding: 1em 0px;
+}
+
+/* ====================== Restaurant Listing ====================== */
+#restaurants-list li {
+  width: 80%;
+  margin: 15px auto;
+  max-width: 320px;
+}
+
+#restaurants-list .restaurant-img {
+  margin: 15px auto 0px;
+  border-radius: 5%; 
+}
+
+/* 
+* Responsive overrides for vertical smartphone layouts
+*/
+@media screen and (max-width: 450px) {
+  .filter-options select {
+    margin: 10px auto;
+  }
+
+}
+
+/* 
+* Responsive overrides for horizontal smartphones
+* and vertical tables
+*/
+@media screen and (max-width: 800px) {
+
+
+}
+
+/* 
+* Responsive overrides for larger desktop and tablet layouts
+*/
+@media screen and (min-width: 1000px) {
+  /* fix total page width and introduce margins */
+  body {
+      width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+}

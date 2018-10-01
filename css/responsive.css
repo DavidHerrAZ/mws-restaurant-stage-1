@@ -1,4 +1,4 @@
-/* Overall responsive layout changes */
+/* Overall index.html responsive layout changes */
 
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
@@ -7,15 +7,62 @@
 }
 
 /* ====================== Restaurant Listing ====================== */
-#restaurants-list li {
-  width: 80%;
-  margin: 15px auto;
-  max-width: 320px;
+#restaurants-list {
+  /* 
+  * Removed listing container margin due to too much background
+  * being created at smaller screen sizes. Need to keep 0px
+  * margin at bottom to avoid whtie space between this container
+  * and the darker colored footer.
+  */
+  margin-bottom: 0px;
 }
 
-#restaurants-list .restaurant-img {
-  margin: 15px auto 0px;
-  border-radius: 5%; 
+#restaurants-list li {
+  width: 80%;
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+#restaurants-list .restaurant-img,
+#restaurant-img {
+  /* Ensure images stay in card, round out edges for cleaner look */
+  margin: 20px auto 0px;
+  border-radius: 5%;
+  /* 
+  * Basic image responsiveness per 
+  * https://www.w3schools.com/howto/howto_css_image_responsive.asp 
+  */
+  height: auto;
+}
+
+/* Overall restaurant.html responsive layout changes */
+
+/* ====================== Restaurant Details ====================== */
+#map-container {
+  width: 100%;
+  height: 400px;
+}
+
+#restaurant-container, 
+#reviews-container {
+  padding: 1em 0px;
+  margin: 0px auto;
+}
+
+#restaurant-container,
+#reviews-container > h2 {
+  margin-left: 20px;
+}
+
+#restaurant-img,
+#restaurant-cuisine {
+  max-width: 600px;
+}
+
+#reviews-list li {
+  width: calc(80% - 40px);
+  margin: 20px 20px auto;
+  max-width: 500px;
 }
 
 /* 
@@ -23,22 +70,32 @@
 */
 @media screen and (max-width: 450px) {
   .filter-options select {
+    /* 
+    * Center filters within options header  
+    * And stack drop-downs over one another
+    */
     margin: 10px auto;
+    display: block;
   }
-
 }
 
 /* 
-* Responsive overrides for horizontal smartphones
-* and vertical tables
+* Responsive for horizontal smartphones and vertical tablets
 */
-@media screen and (max-width: 800px) {
-
-
+@media screen and (min-width: 800px) {
+  /* 
+  * Introduce flex-box for multi-card rows
+  * 800px is earliest two cards fit on one row
+  * at cards max-midth + margins
+  */
+  #restaurants-list {
+    display:flex;
+    flex-wrap: wrap;
+  }
 }
 
 /* 
-* Responsive overrides for larger desktop and tablet layouts
+* Responsive for larger desktop and tablet layouts
 */
 @media screen and (min-width: 1000px) {
   /* fix total page width and introduce margins */

@@ -83,6 +83,37 @@
 /* 
 * Responsive for horizontal smartphones and vertical tablets
 */
+@media screen and (min-width: 700px) {
+  /* 
+  * Restore original styling when one column layout reaches
+  * viewport of non-responsive behavior. Add responsive design
+  * to any non-responsive elements.
+  */
+  .inside #map-container {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: calc(100% - 130px);
+  }
+  .inside #map {
+    height: 100%;
+    width: 100%;
+  }
+  .inside #footer {
+    bottom: 0;
+    position: absolute;
+    width: 50%;
+    padding: 1em 0;
+  }
+  #restaurant-container,
+  #reviews-container {
+    width: 50%;
+  }
+  #reviews-container {
+    margin: 0;
+  }
+}
+
 @media screen and (min-width: 800px) {
   /* 
   * Introduce flex-box for multi-card rows

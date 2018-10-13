@@ -62,7 +62,7 @@
 #reviews-list li {
   width: calc(80% - 40px);
   margin: 20px 20px auto;
-  max-width: 500px;
+  max-width: 600px;
   padding-top: 20px;
 }
 
@@ -89,25 +89,33 @@
   * viewport of non-responsive behavior. Add responsive design
   * to any non-responsive elements.
   */
-  .inside #map-container {
-    position: absolute;
-    right: 0;
+  #rest-map-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+  }
+  .inside #map-container,
+  #restaurant-container {
     width: 50%;
-    height: calc(100% - 130px);
+    margin: 0;
+  }
+  .inside #restaurant-name,
+  .inside #restaurant-img,
+  .inside #restaurant-cuisine,
+  .inside #restaurant-address,
+  .inside #restaurant-hours {
+    margin-left: 20px;
+  }
+  .inside #map-container {
+    height: auto;
   }
   .inside #map {
     height: 100%;
     width: 100%;
   }
   .inside #footer {
-    bottom: 0;
-    position: absolute;
-    width: 50%;
+    width: 100%;
     padding: 1em 0;
-  }
-  #restaurant-container,
-  #reviews-container {
-    width: 50%;
   }
   #reviews-container {
     margin: 0;

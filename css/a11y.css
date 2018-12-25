@@ -1,0 +1,11 @@
+/* ====================== a11y skip to content ====================== */
+/* By default, do not show skip to content link */
+#skip-to-content {
+  visibility: hidden;
+}
+/* But display when hovered, active, or FOCUS */
+#skip-to-content:hover,
+#skip-to-content:active,
+#skip-to-content:focus {
+  visibility: visible;
+}

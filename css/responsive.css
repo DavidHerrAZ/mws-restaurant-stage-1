@@ -8,7 +8,7 @@
 
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
-  /* 
+  /*
   * Removed listing container margin due to too much background
   * being created at smaller screen sizes. Need to keep 0px
   * margin at bottom to avoid whtie space between this container
@@ -21,6 +21,8 @@
   width: 80%;
   margin: 20px auto;
   max-width: 300px;
+  border-top-left-radius: 5%;
+  border-bottom-right-radius: 5%;
 }
 
 #restaurants-list .restaurant-img,
@@ -28,9 +30,9 @@
   /* Ensure images stay in card, round out edges for cleaner look */
   margin: 20px auto 0px;
   border-radius: 5%;
-  /* 
-  * Basic image responsiveness per 
-  * https://www.w3schools.com/howto/howto_css_image_responsive.asp 
+  /*
+  * Basic image responsiveness per
+  * https://www.w3schools.com/howto/howto_css_image_responsive.asp
   */
   height: auto;
 }
@@ -43,7 +45,7 @@
   height: 400px;
 }
 
-#restaurant-container, 
+#restaurant-container,
 #reviews-container {
   padding: 1em 0px;
   margin: 0px auto;
@@ -60,19 +62,57 @@
 }
 
 #reviews-list li {
-  width: calc(80% - 40px);
-  margin: 20px 20px auto;
+  margin: 20px;
   max-width: 600px;
-  padding-top: 20px;
+  padding: 0px 20px 20px 0px;
+  border-top-left-radius: 5%;
+  border-bottom-right-radius: 5%;
 }
 
-/* 
+#reviews-list .review-head {
+  background-color: #333;
+  width: 100%;
+  height: 1.75rem;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#reviews-list .review-name,
+.review-date {
+  width: calc(50% - 20px);
+  display:inline-block;
+}
+
+#reviews-list .review-name {
+  color: #fff;
+  font-size: 1.25em;
+}
+
+#reviews-list .review-date {
+  color: #ddd;
+  text-align: right;
+}
+
+#reviews-list .review-rating {
+  background-color: #f58500;
+  color: #fff;
+  width: fit-content;
+  border-radius: 5%;
+  text-align: center;
+  margin-left: 10px;
+  padding: 0px 10px;
+}
+
+#reviews-list li p {
+  margin-left: 10px;
+}
+/*
 * Responsive overrides for vertical smartphone layouts
 */
 @media screen and (max-width: 450px) {
   .filter-options select {
-    /* 
-    * Center filters within options header  
+    /*
+    * Center filters within options header
     * And stack drop-downs over one another
     */
     margin: 10px auto;
@@ -80,11 +120,11 @@
   }
 }
 
-/* 
+/*
 * Responsive for horizontal smartphones and vertical tablets
 */
 @media screen and (min-width: 700px) {
-  /* 
+  /*
   * Restore original styling when one column layout reaches
   * viewport of non-responsive behavior. Add responsive design
   * to any non-responsive elements.
@@ -123,7 +163,7 @@
 }
 
 @media screen and (min-width: 800px) {
-  /* 
+  /*
   * Introduce flex-box for multi-card rows
   * 800px is earliest two cards fit on one row
   * at cards max-midth + margins
@@ -134,7 +174,7 @@
   }
 }
 
-/* 
+/*
 * Responsive for larger desktop and tablet layouts
 */
 @media screen and (min-width: 1000px) {

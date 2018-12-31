@@ -88,6 +88,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  // Set restaurant image alt tag for accessibility
+  image.setAttribute("alt",restaurant.name + " restaurant's supplied banner image")
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');

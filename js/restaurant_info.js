@@ -152,6 +152,8 @@ createReviewHTML = (review) => {
   /** Add a review card header to contain name & date with solid background*/
   const reviewHead = document.createElement('div');
   reviewHead.className = 'review-head'
+  // Set tab-index to 0 to focus hits the review
+  reviewHead.setAttribute("tabindex","0")
   li.appendChild(reviewHead)
 
   const name = document.createElement('p');

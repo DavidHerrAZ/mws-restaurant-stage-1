@@ -16,21 +16,24 @@
   <header>
     <nav>
       <a href=#restaurants-list id="skip-to-content">Skip to Restaurant List</a>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <a href=#neighborhoods-select id="skip-to-content">Skip to Neighborhood Filter</a>
+      <a href=#cuisine-select id="skip-to-content">Skip to Cuisine Filter</a>
+
+      <h1><a href="/" aria-label="Home">Restaurant Reviews</a></h1>
     </nav>
   </header>
 
   <main id="maincontent">
-    <section id="map-container">
+    <section id="map-container" tabindex="-1">
       <div id="map"></div>
     </section>
     <section>
       <div class="filter-options">
         <h2>Filter Results</h2>
-        <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+        <select id="neighborhoods-select" aria-label="Neighborhood Filter Listbox" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
         </select>
-        <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+        <select id="cuisines-select" aria-label="Cuisine Filter Listbox" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
       </div>

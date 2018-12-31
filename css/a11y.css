@@ -1,11 +1,17 @@
 /* ====================== a11y skip to content ====================== */
 /* By default, do not show skip to content link */
 #skip-to-content {
-  visibility: hidden;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background-color: #f58500;
+  color: #fff;
+  width: fit-content;
+  border-radius: 5%;
+  text-align: center;
+
 }
-/* But display when hovered, active, or FOCUS */
-#skip-to-content:hover,
-#skip-to-content:active,
+/* But display when FOCUS */
 #skip-to-content:focus {
-  visibility: visible;
+  top: 0;
 }

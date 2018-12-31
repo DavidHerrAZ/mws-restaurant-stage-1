@@ -211,3 +211,14 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+/**
+ * Register service worker for off-line viewing.
+ */
+if (navigator.serviceWorker) {
+  navigator.serviceWorker
+    .register('/js/sw.js')
+    .catch(function(err) {
+      console.log(err);
+    });
+}

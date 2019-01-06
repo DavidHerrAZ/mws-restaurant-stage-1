@@ -37,3 +37,23 @@ self.addEventListener("install", function(event) {
     })
   );
 });
+
+// Double check cache for new version. Delete old cache assets.
+self.addEventListener("activate", function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames
+          .filter(function(cacheName) {
+            return (
+              cacheName.startsWith("restaurants-") &&
+              cacheName != offlineVersion
+            );
+          })
+          .map(function(cacheName) {
+            return caches.delete(cacheName);
+          })
+      );
+    })
+  );
+});

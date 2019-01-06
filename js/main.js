@@ -77,16 +77,19 @@ initMap = () => {
     zoom: 12,
     scrollWheelZoom: false
   });
-  L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}", {
-    mapboxToken:
-      "pk.eyJ1IjoiZGF2aWRoZXJyYXoiLCJhIjoiY2ptaWwwY2MzMDYzZzN1bzEyN2Nqd2I3MSJ9.cKNGvUy6dAZatnT-bQHmGw",
-    maxZoom: 18,
-    attribution:
-      'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: "mapbox.streets"
-  }).addTo(newMap);
+  L.tileLayer(
+    "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}",
+    {
+      mapboxToken:
+        "pk.eyJ1IjoiZGF2aWRoZXJyYXoiLCJhIjoiY2ptaWwwY2MzMDYzZzN1bzEyN2Nqd2I3MSJ9.cKNGvUy6dAZatnT-bQHmGw",
+      maxZoom: 18,
+      attribution:
+        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      id: "mapbox.streets"
+    }
+  ).addTo(newMap);
 
   updateRestaurants();
 };
@@ -116,15 +119,19 @@ updateRestaurants = () => {
   const cuisine = cSelect[cIndex].value;
   const neighborhood = nSelect[nIndex].value;
 
-  DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
-    if (error) {
-      // Got an error!
-      console.error(error);
-    } else {
-      resetRestaurants(restaurants);
-      fillRestaurantsHTML();
+  DBHelper.fetchRestaurantByCuisineAndNeighborhood(
+    cuisine,
+    neighborhood,
+    (error, restaurants) => {
+      if (error) {
+        // Got an error!
+        console.error(error);
+      } else {
+        resetRestaurants(restaurants);
+        fillRestaurantsHTML();
+      }
     }
-  });
+  );
 };
 
 /**
@@ -163,7 +170,10 @@ createRestaurantHTML = restaurant => {
   const image = document.createElement("img");
   image.className = "restaurant-img";
   // Set restaurant image alt tag for accessibility
-  image.setAttribute("alt", restaurant.name + " restaurant's supplied banner image");
+  image.setAttribute(
+    "alt",
+    restaurant.name + " restaurant's supplied banner image"
+  );
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
@@ -219,6 +229,6 @@ addMarkersToMap = (restaurants = self.restaurants) => {
  */
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register("/js/sw.js").catch(function(err) {
-    console.log(err);
+    return;
   });
 }

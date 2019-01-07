@@ -40,6 +40,10 @@
 /* Overall restaurant.html responsive layout changes */
 
 /* ====================== Restaurant Details ====================== */
+#breadcrumb-nav {
+  text-align: left;
+}
+
 #map-container {
   width: 100%;
   height: 400px;
@@ -80,7 +84,7 @@
 #reviews-list .review-name,
 .review-date {
   width: calc(50% - 20px);
-  display:inline-block;
+  display: inline-block;
 }
 
 #reviews-list .review-name {
@@ -169,7 +173,7 @@
   * at cards max-midth + margins
   */
   #restaurants-list {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
   }
 }
@@ -180,8 +184,8 @@
 @media screen and (min-width: 1000px) {
   /* fix total page width and introduce margins */
   body {
-      width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

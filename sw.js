@@ -1,4 +1,4 @@
-const offlineVersion = 'restaurants-offline-v3';
+const offlineVersion = 'restaurants-offline-v2';
 
 const offlineFiles = [
   '/',
@@ -25,7 +25,7 @@ const offlineFiles = [
   '/js/dbhelper.js',
   '/js/main.js',
   '/js/restaurant_info.js',
-  '/js/sw.js'
+  'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js '
 ];
 
 // Wait until the the service work installs to verify cache
@@ -64,5 +64,18 @@ self.addEventListener('activate', function(event) {
 // Source: Udacity wittr project
 // Source2: https://codelabs.developers.google.com/codelabs/offline/#7
 self.addEventListener('fetch', function(event) {
-  console.log(event.request.url);
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return (
+        response ||
+        // when cached response is falsey, fetch
+        // open current cache, and add the asset
+        fetch(event.request).then(function(response) {
+          caches.open(offlineVersion).then(function(cache) {
+            cache.put(event.request, response);
+          });
+        })
+      );
+    })
+  );
 });

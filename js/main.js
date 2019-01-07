@@ -228,7 +228,12 @@ addMarkersToMap = (restaurants = self.restaurants) => {
  * Register service worker for off-line viewing.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/sw.js').catch(function(err) {
-    return;
-  });
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(function(response) {
+      return response;
+    })
+    .catch(function(error) {
+      return error;
+    });
 }

@@ -17,6 +17,14 @@
   margin-bottom: 0px;
 }
 
+#restaurants-list h2 {
+  color: orange;
+  font-size: 14pt;
+  font-weight: 200;
+  text-transform: uppercase;
+  margin: 10px 0px 10px;
+}
+
 #restaurants-list li {
   width: 80%;
   margin: 20px auto;
@@ -56,8 +64,12 @@
 }
 
 #restaurant-container,
-#reviews-container > h2 {
+#reviews-container > h3 {
   margin-left: 20px;
+  color: orange;
+  font-size: 18pt;
+  font-weight: 200;
+  text-transform: uppercase;
 }
 
 #restaurant-img,

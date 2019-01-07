@@ -5,7 +5,7 @@ var markers = [];
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
-document.addEventListener("DOMContentLoaded", event => {
+document.addEventListener('DOMContentLoaded', event => {
   initMap(); // added
   fetchNeighborhoods();
   fetchCuisines();
@@ -30,9 +30,9 @@ fetchNeighborhoods = () => {
  * Set neighborhoods HTML.
  */
 fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
-  const select = document.getElementById("neighborhoods-select");
+  const select = document.getElementById('neighborhoods-select');
   neighborhoods.forEach(neighborhood => {
-    const option = document.createElement("option");
+    const option = document.createElement('option');
     option.innerHTML = neighborhood;
     option.value = neighborhood;
     select.append(option);
@@ -58,10 +58,10 @@ fetchCuisines = () => {
  * Set cuisines HTML.
  */
 fillCuisinesHTML = (cuisines = self.cuisines) => {
-  const select = document.getElementById("cuisines-select");
+  const select = document.getElementById('cuisines-select');
 
   cuisines.forEach(cuisine => {
-    const option = document.createElement("option");
+    const option = document.createElement('option');
     option.innerHTML = cuisine;
     option.value = cuisine;
     select.append(option);
@@ -72,22 +72,22 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  * Initialize leaflet map, called from HTML.
  */
 initMap = () => {
-  self.newMap = L.map("map", {
+  self.newMap = L.map('map', {
     center: [40.722216, -73.987501],
     zoom: 12,
     scrollWheelZoom: false
   });
   L.tileLayer(
-    "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}",
+    'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}',
     {
       mapboxToken:
-        "pk.eyJ1IjoiZGF2aWRoZXJyYXoiLCJhIjoiY2ptaWwwY2MzMDYzZzN1bzEyN2Nqd2I3MSJ9.cKNGvUy6dAZatnT-bQHmGw",
+        'pk.eyJ1IjoiZGF2aWRoZXJyYXoiLCJhIjoiY2ptaWwwY2MzMDYzZzN1bzEyN2Nqd2I3MSJ9.cKNGvUy6dAZatnT-bQHmGw',
       maxZoom: 18,
       attribution:
         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      id: "mapbox.streets"
+      id: 'mapbox.streets'
     }
   ).addTo(newMap);
 
@@ -110,8 +110,8 @@ initMap = () => {
  * Update page and map for current restaurants.
  */
 updateRestaurants = () => {
-  const cSelect = document.getElementById("cuisines-select");
-  const nSelect = document.getElementById("neighborhoods-select");
+  const cSelect = document.getElementById('cuisines-select');
+  const nSelect = document.getElementById('neighborhoods-select');
 
   const cIndex = cSelect.selectedIndex;
   const nIndex = nSelect.selectedIndex;
@@ -140,8 +140,8 @@ updateRestaurants = () => {
 resetRestaurants = restaurants => {
   // Remove all restaurants
   self.restaurants = [];
-  const ul = document.getElementById("restaurants-list");
-  ul.innerHTML = "";
+  const ul = document.getElementById('restaurants-list');
+  ul.innerHTML = '';
 
   // Remove all map markers
   if (self.markers) {
@@ -155,7 +155,7 @@ resetRestaurants = restaurants => {
  * Create all restaurants HTML and add them to the webpage.
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
-  const ul = document.getElementById("restaurants-list");
+  const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
@@ -166,34 +166,34 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  * Create restaurant HTML.
  */
 createRestaurantHTML = restaurant => {
-  const li = document.createElement("li");
-  const image = document.createElement("img");
-  image.className = "restaurant-img";
+  const li = document.createElement('li');
+  const image = document.createElement('img');
+  image.className = 'restaurant-img';
   // Set restaurant image alt tag for accessibility
   image.setAttribute(
-    "alt",
+    'alt',
     restaurant.name + " restaurant's supplied banner image"
   );
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
-  const name = document.createElement("h1");
+  const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
   li.append(name);
 
-  const neighborhood = document.createElement("p");
+  const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
   li.append(neighborhood);
 
-  const address = document.createElement("p");
+  const address = document.createElement('p');
   address.innerHTML = restaurant.address;
   li.append(address);
 
-  const more = document.createElement("a");
-  more.innerHTML = "View Details";
+  const more = document.createElement('a');
+  more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   // Set aria-labeled to 'view details' of the restaurant name to clarify link intention
-  more.setAttribute("aria-label", "view details " + restaurant.name);
+  more.setAttribute('aria-label', 'view details ' + restaurant.name);
   li.append(more);
 
   return li;
@@ -206,7 +206,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
-    marker.on("click", onClick);
+    marker.on('click', onClick);
     function onClick() {
       window.location.href = marker.options.url;
     }
@@ -228,7 +228,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
  * Register service worker for off-line viewing.
  */
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/js/sw.js").catch(function(err) {
+  navigator.serviceWorker.register('/sw.js').catch(function(err) {
     return;
   });
 }
